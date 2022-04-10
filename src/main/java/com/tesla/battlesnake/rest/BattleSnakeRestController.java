@@ -56,7 +56,7 @@ public class BattleSnakeRestController {
     }
     
     @Scope("request")
-    @RequestMapping(value = "/start", method = RequestMethod.GET, 
+    @RequestMapping(value = "/start", method = RequestMethod.POST, 
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, String>> start(@RequestBody JsonNode startRequest){
     	  	
@@ -65,7 +65,7 @@ public class BattleSnakeRestController {
     }
     
     @Scope("request")
-    @RequestMapping(value = "/move", method = RequestMethod.GET, 
+    @RequestMapping(value = "/move", method = RequestMethod.POST, 
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, String>> move(@RequestBody JsonNode moveRequest){
     	  	
@@ -153,7 +153,7 @@ public class BattleSnakeRestController {
      * @return responses back to the engine are ignored.
      */
     @Scope("request")
-    @RequestMapping(value = "/end", method = RequestMethod.GET, 
+    @RequestMapping(value = "/end", method = RequestMethod.POST, 
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, String>> end(@RequestBody JsonNode endRequest){
     	  	
