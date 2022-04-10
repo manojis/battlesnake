@@ -42,10 +42,10 @@ public class BattleSnakeRestController {
     	
     	 Map<String, String> response = new HashMap<>();
          response.put("apiversion", "1");
-         response.put("author", ""); // TODO: Your Battlesnake Username
-         response.put("color", "#736CCB"); // TODO: Personalize
-         response.put("head", "beluga"); // TODO: Personalize
-         response.put("tail", "curled"); // TODO: Personalize
+         response.put("author", "battlesnake-manoj");
+         response.put("color", "#736CCB");
+         response.put("head", "beluga");
+         response.put("tail", "curled");
          
          return new ResponseEntity<Map<String, String>>(response, HttpStatus.OK); 
     }
