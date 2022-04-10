@@ -55,7 +55,7 @@ public class BattleSnakeRestController {
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, String>> start(JsonNode startRequest){
     	
-    	LOG.info("START");    	
+    	LOG.info("START: "+startRequest);    	
     	return new ResponseEntity<Map<String, String>>(EMPTY, HttpStatus.OK); 
     }
 
