@@ -1,0 +1,1 @@
+web java -Xdebug -Dserver.port=$PORT $JAVA_OPTS -jar target/battlesnake-0.0.1-SNAPSHOT.jar
