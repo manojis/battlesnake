@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 @RestController
 @EnableAutoConfiguration
+@RequestMapping("/")
 public class BattleSnakeRestController {
 	
 	private static final ObjectMapper JSON_MAPPER = new ObjectMapper();
@@ -36,8 +38,7 @@ public class BattleSnakeRestController {
      */
     private static final Map<String, String> EMPTY = new HashMap<>();
     
-    @RequestMapping(value = "/", method = RequestMethod.GET, 
-    produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, String>> index() {
     	
     	 Map<String, String> response = new HashMap<>();
@@ -53,11 +54,8 @@ public class BattleSnakeRestController {
     @Scope("request")
     @RequestMapping(value = "/start", method = RequestMethod.GET, 
     produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Map<String, String>> start(JsonNode startRequest){
-    	
-    	 ObjectMapper mapper = new ObjectMapper();
-    	 
-    	
+    public ResponseEntity<Map<String, String>> start(@RequestBody JsonNode startRequest){
+    	  	
     	LOG.info("START: "+startRequest.toPrettyString());
     	return new ResponseEntity<Map<String, String>>(EMPTY, HttpStatus.OK); 
     }
