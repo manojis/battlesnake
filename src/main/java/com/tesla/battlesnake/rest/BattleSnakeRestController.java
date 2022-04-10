@@ -51,7 +51,7 @@ public class BattleSnakeRestController {
     }
     
     @Scope("request")
-    @RequestMapping(value = "start", method = RequestMethod.GET, 
+    @RequestMapping(value = "/start", method = RequestMethod.GET, 
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, String>> start(JsonNode startRequest){
     	
