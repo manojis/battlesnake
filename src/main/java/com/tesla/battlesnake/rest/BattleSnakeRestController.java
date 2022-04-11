@@ -60,7 +60,12 @@ public class BattleSnakeRestController {
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, String>> start(@RequestBody JsonNode startRequest){
     	  	
-    	LOG.info("START: "+startRequest.toPrettyString());
+    	try {
+			LOG.info("Start Data: {}", JSON_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(startRequest));
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	return new ResponseEntity<Map<String, String>>(EMPTY, HttpStatus.OK); 
     }
     
@@ -70,7 +75,7 @@ public class BattleSnakeRestController {
     public ResponseEntity<Map<String, String>> move(@RequestBody JsonNode moveRequest){
     	  	
     	try {
-            LOG.info("Data: {}", JSON_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(moveRequest));
+            LOG.info("Move Data: {}", JSON_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(moveRequest));
         } catch (JsonProcessingException e) {
             LOG.error("Error parsing payload", e);
         }
