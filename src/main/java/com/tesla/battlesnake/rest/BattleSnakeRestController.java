@@ -6,11 +6,13 @@ package com.tesla.battlesnake.rest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tesla.battlesnake.model.Board;
+import com.tesla.battlesnake.model.Request;
+import com.tesla.battlesnake.model.Snake;
+import com.tesla.battlesnake.model.You;
+import com.tesla.battlesnake.service.BattleSnakeService;
 
 /**
  * @author Manoj
@@ -36,6 +43,9 @@ public class BattleSnakeRestController {
 	
 	private static final ObjectMapper JSON_MAPPER = new ObjectMapper();
 	private static final Logger LOG = LoggerFactory.getLogger(BattleSnakeRestController.class);
+	
+	@Autowired
+	BattleSnakeService battleSnakeService;
 	
 	/**
      * For the start/end request
@@ -66,6 +76,7 @@ public class BattleSnakeRestController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    	
     	return new ResponseEntity<Map<String, String>>(EMPTY, HttpStatus.OK); 
     }
     
@@ -76,6 +87,11 @@ public class BattleSnakeRestController {
     	  	
     	try {
             LOG.info("Move Data: {}", JSON_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(moveRequest));
+            
+//            Snake mySnake = battleSnakeService.findMySnake(moveRequest.get("you"));
+//            List<Snake> otherSnakes = battleSnakeService.findOtherSnakes(moveRequest.get("board"));
+            
+            
         } catch (JsonProcessingException e) {
             LOG.error("Error parsing payload", e);
         }
